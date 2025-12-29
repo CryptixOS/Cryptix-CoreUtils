@@ -12,3 +12,10 @@ version = "0.1.0"
 dependencies = [
  "coreutils",
 ]
+
+[[package]]
+name = "yes"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
