@@ -1,5 +1,6 @@
 use crate::syscall::syscall;
 use core::mem::MaybeUninit;
+use std::process::exit;
 
 #[repr(C)]
 pub struct UtsName {
@@ -19,7 +20,7 @@ pub fn uname_main() -> i32 {
     let res = syscall(SYS_UNAME, uts.as_mut_ptr() as usize, 0, 0);
     if res < 0 {
         eprintln!("uname syscall failed: {}", -res);
-        std::process::exit(1);
+        exit(1);
     }
 
     let uts = unsafe { uts.assume_init() };
@@ -29,7 +30,7 @@ pub fn uname_main() -> i32 {
         .iter()
         .position(|&c| c == 0)
         .unwrap_or(sysname_bytes.len());
-    let sysname = std::str::from_utf8(&sysname_bytes[..len]).unwrap_or("Unknown");
+    let sysname = str::from_utf8(&sysname_bytes[..len]).unwrap_or("Unknown");
 
     println!("{}", sysname);
 

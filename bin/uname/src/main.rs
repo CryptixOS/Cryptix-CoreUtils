@@ -1,5 +1,6 @@
 use coreutils::uname_main;
+use std::process::exit;
 
 fn main() {
-    std::process::exit(uname_main());
+    exit(uname_main());
 }
