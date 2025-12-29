@@ -3,3 +3,4 @@ members = [
     "coreutils",
     "bin/uname",
 ]
+resolver = "3"

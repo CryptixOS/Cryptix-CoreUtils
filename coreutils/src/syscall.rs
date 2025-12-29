@@ -1,6 +1,6 @@
 use std::arch::asm;
 
-pub unsafe fn syscall(num: usize, arg1: usize, arg2: usize, arg3: usize) -> isize {
+pub fn syscall(num: usize, arg1: usize, arg2: usize, arg3: usize) -> isize {
     let ret: isize;
 
     unsafe {
@@ -13,5 +13,6 @@ pub unsafe fn syscall(num: usize, arg1: usize, arg2: usize, arg3: usize) -> isiz
             lateout("rax") ret,
         );
     }
-    return ret;
+
+    ret
 }

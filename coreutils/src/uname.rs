@@ -1,5 +1,4 @@
 use crate::syscall::syscall;
-use core::ffi::CStr;
 use core::mem::MaybeUninit;
 
 #[repr(C)]
@@ -17,7 +16,7 @@ const SYS_UNAME: usize = 63;
 pub fn uname_main() -> i32 {
     let mut uts = MaybeUninit::<UtsName>::uninit();
 
-    let res = unsafe { syscall(SYS_UNAME, uts.as_mut_ptr() as usize, 0, 0) };
+    let res = syscall(SYS_UNAME, uts.as_mut_ptr() as usize, 0, 0);
     if res < 0 {
         eprintln!("uname syscall failed: {}", -res);
         std::process::exit(1);
@@ -33,5 +32,6 @@ pub fn uname_main() -> i32 {
     let sysname = std::str::from_utf8(&sysname_bytes[..len]).unwrap_or("Unknown");
 
     println!("{}", sysname);
-    return 0;
+
+    0
 }
