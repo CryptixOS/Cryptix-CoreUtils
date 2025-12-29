@@ -8,17 +8,17 @@ Repeatedly output a line with all specified STRING(s), or 'y'.
 const VERSION_MESSAGE: &str = env!("CARGO_PKG_VERSION");
 
 pub fn yes(args: Vec<String>) -> i32 {
-	if args.iter().any(|a| a == "--help" || a == "-h") {
-		println!("{}", HELP_MESSAGE);
+    if args.iter().any(|a| a == "--help" || a == "-h") {
+        println!("{}", HELP_MESSAGE);
 
-		return 0;
-	}
+        return 0;
+    }
 
-	if args.iter().any(|a| a == "--version" || a == "-v") {
-		println!("{}", VERSION_MESSAGE);
+    if args.iter().any(|a| a == "--version" || a == "-v") {
+        println!("{}", VERSION_MESSAGE);
 
-		return 0;
-	}
+        return 0;
+    }
 
     let output = args
         .get(1..)
