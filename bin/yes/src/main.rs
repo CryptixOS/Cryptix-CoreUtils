@@ -1,5 +1,4 @@
-use coreutils::yes::yes;
-
+use coreutils::yes;
 use std::env;
 use std::process::exit;
 

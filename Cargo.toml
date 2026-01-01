@@ -1,6 +1,9 @@
 [workspace]
 members = [
     "coreutils",
-    "bin/uname", "bin/yes", "bin/ls",
+    "bin/clear", 
+    "bin/ls", 
+    "bin/uname", 
+    "bin/yes",
 ]
 resolver = "3"
