@@ -4,8 +4,8 @@ Cryptix-CoreUtils is an early-stage implementation of a minimal set of Unix-like
 
 The focus is on correctness, clear structure, and tight integration with the operating system rather than feature completeness or full GNU compatibility.
 
-[![Build](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/build.yml/badge.svg)](https://github.com/CryptixOS/CryptixOS/actions/workflows/build.yml)
-[![Check-Typos](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/typos.yml/badge.svg)](https://github.com/CryptixOS/CryptixOS/actions/workflows/check-typos.yml)
+[![Build](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/build.yml/badge.svg)](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/build.yml)
+[![Check-Typos](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/typos.yml/badge.svg)](https://github.com/CryptixOS/Cryptix-CoreUtils/actions/workflows/check-typos.yml)
 
 ---
 
