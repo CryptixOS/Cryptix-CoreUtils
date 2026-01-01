@@ -20,7 +20,7 @@ pub struct UtsName {
 #[cfg(target_arch = "x86_64")]
 const SYS_UNAME: usize = 63;
 
-pub fn uname_main() -> i32 {
+pub fn uname() -> i32 {
     let mut uts = MaybeUninit::<UtsName>::uninit();
 
     let res = syscall(SYS_UNAME, uts.as_mut_ptr() as usize, 0, 0);

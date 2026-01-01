@@ -22,7 +22,7 @@ Options:
     );
 }
 
-pub fn clear_main(args: &[String]) -> i32 {
+pub fn clear(args: &[String]) -> i32 {
     let mut term: Option<String> = None;
     let mut clear_scrollback = true;
 

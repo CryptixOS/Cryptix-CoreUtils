@@ -4,9 +4,9 @@
  *
  * SPDX-License-Identifier: GPL-3
  */
-use coreutils::uname_main;
+use coreutils::uname;
 use std::process::exit;
 
 fn main() {
-    exit(uname_main());
+    exit(uname());
 }
