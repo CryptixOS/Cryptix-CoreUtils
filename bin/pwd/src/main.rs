@@ -4,11 +4,11 @@
  *
  * SPDX-License-Identifier: GPL-3
  */
-use coreutils::clear_main;
+use coreutils::pwd;
 use std::env;
 use std::process::exit;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    exit(clear_main(&args));
+    exit(pwd(&args));
 }

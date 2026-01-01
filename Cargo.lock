@@ -14,7 +14,35 @@ name = "coreutils"
 version = "0.1.0"
 
 [[package]]
+name = "echo"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
+name = "false"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
 name = "ls"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
+name = "pwd"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
+name = "true"
 version = "0.1.0"
 dependencies = [
  "coreutils",

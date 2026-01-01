@@ -22,20 +22,21 @@ Options:
     );
 }
 
-pub fn clear_main() -> i32 {
-    let mut args = env::args().skip(1);
-
+pub fn clear_main(args: &[String]) -> i32 {
     let mut term: Option<String> = None;
     let mut clear_scrollback = true;
 
-    while let Some(arg) = args.next() {
-        match arg.as_str() {
+    let mut i = 1; // skip argv[0]
+
+    while i < args.len() {
+        match args[i].as_str() {
             "-T" => {
-                term = args.next();
-                if term.is_none() {
+                i += 1;
+                if i >= args.len() {
                     eprintln!("clear: option '-T' requires an argument");
                     return 1;
                 }
+                term = Some(args[i].clone());
             }
             "-x" => {
                 clear_scrollback = false;
@@ -48,26 +49,33 @@ pub fn clear_main() -> i32 {
                 print_help();
                 return 0;
             }
-            _ => {
+            arg => {
                 eprintln!("clear: unknown option '{}'", arg);
                 return 1;
             }
         }
+        i += 1;
     }
 
     let _term = term
         .or_else(|| env::var("TERM").ok())
         .unwrap_or_else(|| "unknown".into());
 
-    // Minimal ANSI-compatible clear
     let mut out = io::stdout();
-    // Clear scrollback + screen
+
     if clear_scrollback {
-        write!(out, "\x1b[3J\x1b[2J\x1b[H").unwrap();
+        if write!(out, "\x1b[3J\x1b[2J\x1b[H").is_err() {
+            return 1;
+        }
     } else {
-        write!(out, "\x1b[2J\x1b[H").unwrap();
+        if write!(out, "\x1b[2J\x1b[H").is_err() {
+            return 1;
+        }
     }
 
-    out.flush().unwrap();
-    return 0
+    if out.flush().is_err() {
+        return 1;
+    }
+
+    0
 }

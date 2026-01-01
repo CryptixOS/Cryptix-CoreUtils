@@ -2,7 +2,11 @@
 members = [
     "coreutils",
     "bin/clear", 
+    "bin/echo", 
+    "bin/false", 
     "bin/ls", 
+    "bin/pwd", 
+    "bin/true", 
     "bin/uname", 
     "bin/yes",
 ]
