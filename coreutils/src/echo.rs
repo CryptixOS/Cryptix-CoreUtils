@@ -22,10 +22,8 @@ pub fn echo(args: &[String]) -> i32 {
         return 1;
     }
 
-    if newline {
-        if writeln!(out).is_err() {
-            return 1;
-        }
+    if newline && writeln!(out).is_err() {
+        return 1;
     }
 
     0

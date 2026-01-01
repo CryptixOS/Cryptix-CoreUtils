@@ -67,10 +67,8 @@ pub fn clear(args: &[String]) -> i32 {
         if write!(out, "\x1b[3J\x1b[2J\x1b[H").is_err() {
             return 1;
         }
-    } else {
-        if write!(out, "\x1b[2J\x1b[H").is_err() {
-            return 1;
-        }
+    } else if write!(out, "\x1b[2J\x1b[H").is_err() {
+        return 1;
     }
 
     if out.flush().is_err() {
