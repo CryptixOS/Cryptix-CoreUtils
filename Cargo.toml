@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "coreutils",
+    "bin/cat", 
     "bin/clear", 
     "bin/echo", 
     "bin/false", 
@@ -8,6 +9,7 @@ members = [
     "bin/pwd", 
     "bin/true", 
     "bin/uname", 
+    "bin/whoami",
     "bin/yes",
 ]
 resolver = "3"

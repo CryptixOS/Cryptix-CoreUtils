@@ -1,13 +1,17 @@
+pub mod cat;
 pub mod clear;
 pub mod echo;
 pub mod ls;
 pub mod pwd;
 pub mod syscall;
 pub mod uname;
+pub mod whoami;
 pub mod yes;
 
+pub use cat::cat;
 pub use clear::clear;
 pub use echo::echo;
 pub use pwd::pwd;
 pub use uname::uname;
+pub use whoami::whoami;
 pub use yes::yes;

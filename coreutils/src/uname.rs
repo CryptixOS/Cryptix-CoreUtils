@@ -4,9 +4,8 @@
  *
  * SPDX-License-Identifier: GPL-3
  */
-use crate::syscall::syscall;
+use crate::syscall::{ID as SyscallID, syscall1};
 use core::mem::MaybeUninit;
-use std::process::exit;
 
 #[repr(C)]
 pub struct UtsName {
@@ -17,16 +16,14 @@ pub struct UtsName {
     pub machine: [u8; 65],
     pub domainname: [u8; 65],
 }
-#[cfg(target_arch = "x86_64")]
-const SYS_UNAME: usize = 63;
 
 pub fn uname() -> i32 {
     let mut uts = MaybeUninit::<UtsName>::uninit();
 
-    let res = syscall(SYS_UNAME, uts.as_mut_ptr() as usize, 0, 0);
+    let res = syscall1(SyscallID::UName, uts.as_mut_ptr() as usize);
     if res < 0 {
         eprintln!("uname syscall failed: {}", -res);
-        exit(1);
+        return 1;
     }
 
     let uts = unsafe { uts.assume_init() };
