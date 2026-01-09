@@ -21,6 +21,13 @@ name = "coreutils"
 version = "0.1.0"
 
 [[package]]
+name = "date"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
 name = "echo"
 version = "0.1.0"
 dependencies = [

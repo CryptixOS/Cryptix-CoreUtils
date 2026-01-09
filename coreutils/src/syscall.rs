@@ -7,7 +7,9 @@ pub enum ID {
     Open = 2,
     Close = 3,
     UName = 63,
+    GetTimeOfDay = 96,
     GetEUID = 107,
+    Time = 201,
 }
 
 #[inline(always)]
@@ -63,3 +65,24 @@ pub fn sys_open(path: *const u8, flags: isize, mode: usize) -> SysResult {
 pub fn sys_close(fd: usize) -> SysResult {
     syscall1(ID::Close, fd)
 }
+#[repr(C)]
+pub struct TimeVal {
+    pub tv_sec: usize,
+    pub tv_usec: usize,
+}
+#[repr(C)]
+pub struct TimeZone {
+    pub tz_minuteswest: i32,
+    pub tz_dsttime: i32,
+}
+
+#[inline(always)]
+pub fn sys_gettimeofday(tv: &mut TimeVal, tz: &mut TimeZone) -> isize {
+    syscall3(
+        ID::GetTimeOfDay,
+        tv as *mut _ as usize,
+        tz as *mut _ as usize,
+        0,
+    )
+}
+

@@ -4,6 +4,7 @@ members = [
     "bin/cat", 
     "bin/clear", 
     "bin/echo", 
+    "bin/date", 
     "bin/false", 
     "bin/ls", 
     "bin/pwd", 

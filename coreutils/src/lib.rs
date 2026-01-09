@@ -1,6 +1,7 @@
 pub mod cat;
 pub mod clear;
 pub mod echo;
+pub mod date;
 pub mod ls;
 pub mod pwd;
 pub mod syscall;
@@ -11,6 +12,7 @@ pub mod yes;
 pub use cat::cat;
 pub use clear::clear;
 pub use echo::echo;
+pub use date::date;
 pub use pwd::pwd;
 pub use uname::uname;
 pub use whoami::whoami;
