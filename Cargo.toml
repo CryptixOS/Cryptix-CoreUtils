@@ -10,6 +10,7 @@ members = [
     "bin/ls", 
     "bin/pwd", 
     "bin/true", 
+    "bin/tty", 
     "bin/uname", 
     "bin/whoami",
     "bin/yes",

@@ -6,7 +6,9 @@ pub enum ID {
     Write = 1,
     Open = 2,
     Close = 3,
+    GetPid = 39,
     UName = 63,
+    ReadLink = 89,
     GetTimeOfDay = 96,
     GetEUID = 107,
     SetHostName = 170,
@@ -58,6 +60,7 @@ pub fn sys_read(fd: usize, buf: *mut u8, count: usize) -> SysResult {
 pub fn sys_write(fd: usize, buf: *const u8, count: usize) -> SysResult {
     syscall3(ID::Write, fd, buf as usize, count)
 }
+pub const O_RDONLY: isize = 0;
 #[inline(always)]
 pub fn sys_open(path: *const u8, flags: isize, mode: usize) -> SysResult {
     syscall3(ID::Open, path as usize, flags as usize, mode)
@@ -65,6 +68,10 @@ pub fn sys_open(path: *const u8, flags: isize, mode: usize) -> SysResult {
 #[inline(always)]
 pub fn sys_close(fd: usize) -> SysResult {
     syscall1(ID::Close, fd)
+}
+#[inline(always)]
+pub fn sys_getpid() -> SysResult {
+    return syscall0(ID::GetPid);
 }
 #[repr(C)]
 pub struct UtsName {
@@ -74,9 +81,6 @@ pub struct UtsName {
     pub version: [u8; 65],
     pub machine: [u8; 65],
     pub domainname: [u8; 65],
-}
-pub fn sys_uname(buf: &mut UtsName) -> SysResult {
-    return syscall1(ID::UName, buf as *mut _ as usize);
 }
 impl Default for UtsName {
     fn default() -> Self {
@@ -89,6 +93,14 @@ impl Default for UtsName {
             domainname: [0u8; 65],
         }
     }
+}
+#[inline(always)]
+pub fn sys_uname(buf: &mut UtsName) -> SysResult {
+    return syscall1(ID::UName, buf as *mut _ as usize);
+}
+#[inline(always)]
+pub fn sys_readlink(path: *const u8, buf: *mut u8, bufsz: usize) -> SysResult {
+    return syscall3(ID::ReadLink, path as usize, buf as usize, bufsz);
 }
 #[repr(C)]
 pub struct TimeVal {

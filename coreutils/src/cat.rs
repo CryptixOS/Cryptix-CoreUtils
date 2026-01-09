@@ -4,9 +4,8 @@
  *
  * SPDX-License-Identifier: GPL-3
  */
+use crate::core::print_version;
 use crate::syscall::*;
-
-const VERSION: &str = "cat (cryptix-coreutils) 0.1";
 
 /// Print help message
 fn print_help() {
@@ -21,10 +20,6 @@ Options:
   --version  output version information and exit
 "
     );
-}
-/// Print version
-fn print_version() {
-    println!("{VERSION}\n");
 }
 const BUF_SIZE: usize = 4096;
 
@@ -79,7 +74,6 @@ fn cat_fd(fd: usize, number_lines: bool, show_ends: bool, start_line: &mut usize
     0
 }
 
-const O_RDONLY: isize = 0;
 pub fn cat(args: &[String]) -> i32 {
     let mut number_lines = false;
     let mut show_ends = false;
@@ -92,7 +86,7 @@ pub fn cat(args: &[String]) -> i32 {
                 return 0;
             }
             "--version" | "-v" => {
-                print_version();
+                print_version(args[0].as_str());
                 return 0;
             }
             "-n" => {

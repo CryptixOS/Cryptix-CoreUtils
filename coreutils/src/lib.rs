@@ -1,21 +1,25 @@
 pub mod cat;
 pub mod clear;
-pub mod echo;
+pub mod core;
 pub mod date;
+pub mod echo;
 pub mod hostname;
 pub mod ls;
 pub mod pwd;
 pub mod syscall;
+pub mod tty;
 pub mod uname;
 pub mod whoami;
 pub mod yes;
 
 pub use cat::cat;
 pub use clear::clear;
-pub use echo::echo;
+pub use core::print_version;
 pub use date::date;
+pub use echo::echo;
 pub use hostname::hostname;
 pub use pwd::pwd;
+pub use tty::tty;
 pub use uname::uname;
 pub use whoami::whoami;
 pub use yes::yes;

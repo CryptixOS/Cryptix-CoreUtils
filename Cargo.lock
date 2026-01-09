@@ -70,6 +70,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "tty"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
 name = "uname"
 version = "0.1.0"
 dependencies = [
