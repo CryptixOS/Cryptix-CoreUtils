@@ -42,6 +42,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "hostname"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
 name = "ls"
 version = "0.1.0"
 dependencies = [

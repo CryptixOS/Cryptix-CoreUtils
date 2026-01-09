@@ -9,6 +9,7 @@ pub enum ID {
     UName = 63,
     GetTimeOfDay = 96,
     GetEUID = 107,
+    SetHostName = 170,
     Time = 201,
 }
 
@@ -66,6 +67,30 @@ pub fn sys_close(fd: usize) -> SysResult {
     syscall1(ID::Close, fd)
 }
 #[repr(C)]
+pub struct UtsName {
+    pub sysname: [u8; 65],
+    pub nodename: [u8; 65],
+    pub release: [u8; 65],
+    pub version: [u8; 65],
+    pub machine: [u8; 65],
+    pub domainname: [u8; 65],
+}
+pub fn sys_uname(buf: &mut UtsName) -> SysResult {
+    return syscall1(ID::UName, buf as *mut _ as usize);
+}
+impl Default for UtsName {
+    fn default() -> Self {
+        Self {
+            sysname: [0u8; 65],
+            nodename: [0u8; 65],
+            release: [0u8; 65],
+            version: [0u8; 65],
+            machine: [0u8; 65],
+            domainname: [0u8; 65],
+        }
+    }
+}
+#[repr(C)]
 pub struct TimeVal {
     pub tv_sec: usize,
     pub tv_usec: usize,
@@ -85,4 +110,7 @@ pub fn sys_gettimeofday(tv: &mut TimeVal, tz: &mut TimeZone) -> isize {
         0,
     )
 }
-
+#[inline(always)]
+pub fn sys_sethostname(buf: *const u8, len: usize) -> isize {
+    syscall3(ID::SetHostName, buf as usize, len, 0)
+}

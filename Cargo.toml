@@ -6,6 +6,7 @@ members = [
     "bin/echo", 
     "bin/date", 
     "bin/false", 
+    "bin/hostname", 
     "bin/ls", 
     "bin/pwd", 
     "bin/true", 
