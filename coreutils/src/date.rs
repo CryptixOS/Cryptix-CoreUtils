@@ -116,12 +116,6 @@ fn print_help() {
 
         Show the local time for 9AM next Friday on the west coast of the US
           $ date --date='TZ=\"AmericaLos_Angeles\" 09:00 next Fri'
-
-        Report bugs to: bug-coreutils@gnu.org
-        GNU coreutils home page: <https://www.gnu.org/software/coreutils/>
-        General help using GNU software: <https://www.gnu.org/gethelp/>
-        Full documentation <https://www.gnu.org/software/coreutils/date>
-        or available locally via: info '(coreutils) date invocation'
 "
     );
 }

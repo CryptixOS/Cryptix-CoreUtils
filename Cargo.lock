@@ -49,6 +49,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "id"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
 name = "ls"
 version = "0.1.0"
 dependencies = [
@@ -57,6 +64,13 @@ dependencies = [
 
 [[package]]
 name = "pwd"
+version = "0.1.0"
+dependencies = [
+ "coreutils",
+]
+
+[[package]]
+name = "sleep"
 version = "0.1.0"
 dependencies = [
  "coreutils",

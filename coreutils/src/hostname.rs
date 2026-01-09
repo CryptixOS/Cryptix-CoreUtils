@@ -4,7 +4,8 @@
  *
  * SPDX-License-Identifier: GPL-3
  */
-use crate::syscall::{UtsName, sys_uname, sys_sethostname};
+use crate::core::print_version;
+use crate::syscall::{UtsName, sys_sethostname, sys_uname};
 
 pub fn print_help() {
     println!(
@@ -25,14 +26,8 @@ Show or set the system's host name.
 
 Mandatory or optional arguments to long options are also mandatory or optional
 for any corresponding short options.
-
-Report bugs to <bug-inetutils@gnu.org>.
 "
     );
-}
-const VERSION: &str = "cat (cryptix-coreutils) 0.1";
-fn print_version() {
-    println!("{VERSION}\n");
 }
 
 pub fn hostname(args: &[String]) -> i32 {
@@ -43,7 +38,7 @@ pub fn hostname(args: &[String]) -> i32 {
                 return 0;
             }
             "--version" | "-v" => {
-                print_version();
+                print_version(args[0].as_str());
                 return 0;
             }
             new_name => {
