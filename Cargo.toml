@@ -2,6 +2,7 @@
 members = [
     "coreutils",
     "bin/cat", 
+    "bin/chmod", 
     "bin/clear", 
     "bin/echo", 
     "bin/date", 

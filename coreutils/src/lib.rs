@@ -1,4 +1,5 @@
 pub mod cat;
+pub mod chmod;
 pub mod clear;
 pub mod core;
 pub mod date;
@@ -15,6 +16,7 @@ pub mod whoami;
 pub mod yes;
 
 pub use cat::cat;
+pub use chmod::chmod;
 pub use clear::clear;
 pub use core::print_version;
 pub use date::date;
